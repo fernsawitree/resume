@@ -14,8 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -23,14 +23,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.dbutils.BeanProcessor;
 
 /**
  *
  * @author korea_fern
  */
+
 @WebServlet(name = "TestEducationBean", urlPatterns = {"/TestEducationBean"})
 public class TestEducationBean extends HttpServlet {
     private Connection connection;
+    private static final Logger log = Logger.getLogger(TestEducationBean.class.getName());
+    private static final String QUERY_BY_ID = "SELECT TOP 1 * FROM ${table} WHERE ID = ${id}";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,14 +71,16 @@ public class TestEducationBean extends HttpServlet {
             bean.setEnddate("05/15/2014");
             bean.setDescription("This is a two year program in engineering.");
             beanList.add(bean);
+            store(bean);
         } catch (SQLException ex) {
             Logger.getLogger(TestEducationBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
         //add the new bean to the database using store on the dao
-    public int store(T t) {
+    public int store(EducationBean t) {
         int res = 0;// default to false
         String insertStr = getPSString();
-        log.Education(insertStr);
+        log.info(insertStr);
         Connection conn;
         PreparedStatement ps = null;
         try {
@@ -93,12 +99,58 @@ public class TestEducationBean extends HttpServlet {
         }
         return res;
     }
-    // retrieve the bean just added.
-
-    // print the bean to a page
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      protected void safeClose(Statement st)
+    {
+        if (st != null) {
+            try {
+                st.close();
+            }
+            catch (Exception e) {
+                log.warning(e.getMessage());
+            }
+        }
     }
+    // retrieve the bean just added.
+    public List<EducationBean> runQuery(String queryStr)
+    {
+        queryStr = queryStr.replace("${table}", "EDUCATION");
+        List<EducationBean> beans = new ArrayList<EducationBean>(10);
+        Connection conn;
+        Statement st = null;
+        ResultSet rs = null;
+        log.info(queryStr);
+        try {
+            conn = getConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery(queryStr);
+            BeanProcessor bp = new BeanProcessor();
+            while (rs.next()) {
+                EducationBean bean = (EducationBean) bp.toBean(rs, EducationBean.class); 
+                beans.add(bean);
+            }
+        }
+        catch (SQLException e) {
+            log.warning(e.getMessage());
+        }
+        finally {
+            this.safeClose(rs);
+            this.safeClose(st);
+        }
+        return beans;
+    }
+   
+    
+    public EducationBean findById(int id)
+    {
+        String queryStr = QUERY_BY_ID.replace("${id}", Integer.toString(id));
+        List<EducationBean> qbArray = runQuery(queryStr);
+        if (qbArray != null && qbArray.size() >= 1) {
+            return qbArray.get(0);
+        }
+        return null;
+    }
+    // print the bean to a page
+   
 
     protected Connection getConnection()
             throws SQLException {
@@ -112,29 +164,45 @@ public class TestEducationBean extends HttpServlet {
 // return = ds.getConnection();
         String url = "jdbc:mysql://localhost:3306/Resume";
         String driver = "com.mysql.jdbc.Driver";
-        String uri = url + basePath + "/db/" + database + ";shutdown=true";
-        log.log(Level.INFO, "Database URI: {0}", uri);
+       // String uri = url + basePath + "/db/" + database + ";shutdown=true";
+        log.log(Level.INFO, "Database URL: {0}", url);
         try {
             Class.forName(driver).newInstance();
         } catch (Exception e) {
             log.warning(e.getMessage());
         }
-        this.connection = DriverManager.getConnection(uri, "sa", "");
+        this.connection = DriverManager.getConnection(url, "sa", "");
         log.info("*** Connection Opened ***");
         return this.connection;
     }
 
     private String getPSString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String insertTableSQL = "INSERT INTO EDUCATION"
+				+ "(EDUCATION_ID, INSTITUTE_NAME, DEGREE_NAME, STARTDATE, ENDDATE, ED_DESCRIPTION) VALUES"
+				+ "(?,?,?,?,?,?)";
+       return insertTableSQL;
     }
 
-    private void BeanToPreparedStatement(T t, PreparedStatement ps) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    private void BeanToPreparedStatement(EducationBean name, PreparedStatement ps)throws SQLException {
+        ps.setInt(1, name.getEducationId());
+        ps.setString(2, name.getInstituteName());
+        ps.setString(3, name.getDegreeName());
+        ps.setString(4, name.getStartdate());
+        ps.setString(5, name.getEnddate());
+        ps.setString(6, name.getDescription());
     }
-
-    private static class T {
-
-        public T() {
+    
+    protected void safeClose(ResultSet rs)
+    {
+        if (rs != null) {
+            try {
+                rs.close();
+            }
+            catch (Exception e) {
+            }
         }
     }
+
+   
 }
