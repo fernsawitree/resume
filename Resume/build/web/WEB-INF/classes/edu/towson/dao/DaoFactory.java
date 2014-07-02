@@ -3,7 +3,7 @@ package edu.towson.dao;
 
 import edu.towson.dao.InfoDaoDB;
 import edu.towson.dao.DaoPattern;
-//import edu.towson.beans.Info;
+import edu.towson.beans.Info;
 
 /**
  *
