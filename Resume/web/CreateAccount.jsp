@@ -14,17 +14,18 @@
     </head>
     <body>
         <header>
-            <img src="images/resumepro.png" alt="Resume Pro Logo" />
+            <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
         </header>
         <section class="main">
-            <div class="left">
+            <h1>Create and share your beautiful resume in minutes.</h1>
+            <div class="form">
                 <form action="CreateAccount" name="createaccount" method="post">
-            <label for="fname">Fist Name: </label><input type="text" name="fname" id="fname" size="20" />
-            <label for="lname">Last Name: </label><input type="text" name="lname" id="lname" size="20"/>
-            <label for="email">Email: </label><input type="text" name="email" id="email" size="20" />
-            <label for="username">Username: </label><input type="text" name="username" id="iuser_name" size="15" />
-            <label for="password">Password: </label><input type="password" name="password" id="ipassword" size="20" />
-            <input type="submit" value="Create Account" class="button" />
+            <label for="fname">Fist Name: </label><input type="text" name="fname" id="fname" size="20" /><br />
+            <label for="lname">Last Name: </label><input type="text" name="lname" id="lname" size="20"/><br />
+            <label for="email">Email: </label><input type="text" name="email" id="email" size="20" /><br />
+            <label for="username">Username: </label><input type="text" name="username" id="username" size="20" /><br />
+            <label for="password">Password: </label><input type="password" name="password" id="password" size="20" /><br />
+            <label></label><input type="submit" value="Create Account" class="button" />
         </form>
             </div>
            
