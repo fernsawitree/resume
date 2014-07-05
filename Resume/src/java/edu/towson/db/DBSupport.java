@@ -26,7 +26,7 @@ abstract public class DBSupport<T> {
 
     /*-- concrete class should override these values */
     protected String table = "RESUME";
-    protected String database = "resume";
+    protected String database = "Resume_Pro";
     protected String basePath = null;
     private Connection connection = null;
     private static final Logger log = Logger.getLogger(DBSupport.class.getName());

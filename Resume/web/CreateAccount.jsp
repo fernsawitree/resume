@@ -23,17 +23,17 @@
             <label for="fname">Fist Name: </label><input type="text" name="fname" id="fname" size="20" /><br />
             <label for="lname">Last Name: </label><input type="text" name="lname" id="lname" size="20"/><br />
             <label for="email">Email: </label><input type="text" name="email" id="email" size="20" /><br />
+            <label for="phonenumber">Phone Number: </label><input type="text" name="phonenumber" id="phonenumber" size="20" /><br />
             <label for="username">Username: </label><input type="text" name="username" id="username" size="20" /><br />
             <label for="password">Password: </label><input type="password" name="password" id="password" size="20" /><br />
-            <label></label><input type="submit" value="Create Account" class="button" />
+            <label></label><input type="submit" value="Create Account" name="submit" id="submit" class="button" />
         </form>
             </div>
            
             <div class="clear"></div>
         </section>
         <footer>
-            <img src="images/resume1.jpg" alt="resume1" />
-            <img src="images/resume1.jpg" alt="resume1" />
+            <p>Copyright 2014 - Resume Pro</p>
             
         </footer>
     </body>

@@ -10,9 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Education</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <form action="">
+        <header>
+            <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
+        </header>
+    
+        <form action="EducationController" class="form">
             <label for="institutionname">Institution Name: </label><input type="text" name="institutionname" size="20" />
             <label for="degreename">Degree: </label><input type="text" name="degreename" size="50" />
             <label for="startdate">Start Date: </label><input type="text" name="startdate" size="10" />

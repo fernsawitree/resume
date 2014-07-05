@@ -11,8 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="style.css" type="text/css"/>
         <title>Enter Information</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <header>
+            <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
+        </header>
+    
         <form action="EnterInfoController" method="post">
             <%--Experience Section --%>
             <label for="companyname">Company Name: </label><input type="text" name="companyname" id="icompanyname" />

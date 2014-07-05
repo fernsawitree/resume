@@ -61,7 +61,7 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
        
 
         String Driver = "com.mysql.jdbc.Driver";
-        String URL = "jdbc:mysql://localhost:3306/Resume";
+        String URL = "jdbc:mysql://localhost:3306/Resume_Pro";
         ResultSet RS = null;
         try {
             Class.forName(Driver);
@@ -111,9 +111,10 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             user.setUser_id(userId);
             user.setUsername(request.getParameter("username"));
             user.setPassword(request.getParameter("password"));
-            user.setFirstname(request.getParameter("firstname"));
-            user.setLastname(request.getParameter("lastname"));
+            user.setFirstname(request.getParameter("fname"));
+            user.setLastname(request.getParameter("lname"));
             user.setEmail(request.getParameter("email"));
+            user.setPhoneNumber(request.getParameter("phonenumber"));
 
             int res = userdao.store(user);
             if (res != 0) // check that the item was successfully added.

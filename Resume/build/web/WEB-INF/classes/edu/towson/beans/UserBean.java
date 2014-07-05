@@ -15,6 +15,7 @@ public class UserBean {
     private String firstname;
     private String lastname;
     private String email;
+    private String phoneNumber;
 
     /**
      * @return the user_id
@@ -98,6 +99,20 @@ public class UserBean {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+           /**
+     * @return the phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * @param phoneNumber the email to set
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
     
 }

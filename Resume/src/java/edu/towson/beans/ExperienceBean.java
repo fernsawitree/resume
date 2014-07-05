@@ -10,7 +10,7 @@ package edu.towson.beans;
  */
 public class ExperienceBean {
     
-    private int experienceId;
+    private int experience_Id;
     private String companyName;
     private String designation;
     private String startDate;
@@ -20,15 +20,15 @@ public class ExperienceBean {
     /**
      * @return the experienceId
      */
-    public int getExperienceId() {
-        return experienceId;
+    public int getExperience_Id() {
+        return experience_Id;
     }
 
     /**
      * @param experienceId the experienceId to set
      */
-    public void setExperienceId(int experienceId) {
-        this.experienceId = experienceId;
+    public void setExperience_Id(int experience_Id) {
+        this.experience_Id = experience_Id;
     }
 
     /**
