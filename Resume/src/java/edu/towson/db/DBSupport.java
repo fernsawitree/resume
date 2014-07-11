@@ -16,7 +16,7 @@ abstract public class DBSupport<T> {
 //These queries are generic for any table
 
     protected static final String QUERY_FIRST = "SELECT TOP 1 * FROM ${table}";
-    protected static final String QUERY_LAST = "SELECT TOP 1 * FROM ${table} ORDER BY ID DESC";
+    protected static final String QUERY_LAST = "SELECT * FROM ${table} ORDER BY user_id DESC LIMIT 1";
     protected static final String QUERY_NEXT = "SELECT TOP 1 * FROM ${table} WHERE ID > ${id}";
     protected static final String QUERY_PREV = "SELECT TOP 1 * FROM ${table} WHERE ID < ${id} ORDER BY id DESC";
     protected static final String QUERY_BY_ID = "SELECT TOP 1 * FROM ${table} WHERE ID = ${id}";

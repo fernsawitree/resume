@@ -3,8 +3,8 @@ package edu.towson.controllers;
 /*
  * Fern Sawitree Euamethiyangkool
  */
-import edu.towson.beans.SkillBean;
-import edu.towson.dao.SkillBeanDao;
+import edu.towson.beans.AddressBean;
+import edu.towson.dao.AddressBeanDao;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,15 +24,15 @@ import javax.servlet.http.HttpSession;
  *
  * @author korea_fern
  */
-@WebServlet(urlPatterns = {"/SkillsController"})
-public class SkillsController extends HttpServlet {
-private static final Logger log = Logger.getLogger(SkillsController.class.getName());
+@WebServlet(urlPatterns = {"/AddressController"})
+public class AddressController extends HttpServlet {
+private static final Logger log = Logger.getLogger(AddressController.class.getName());
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //if Add Experience button is clicked, pop-up window will appear
-        String addEducation = request.getParameter("add");
-        response.sendRedirect("AddSkills.jsp");
+        String addAddress = request.getParameter("addaddress");
+        response.sendRedirect("AddAddress.jsp");
     }
 
     @Override
@@ -50,7 +50,7 @@ private static final Logger log = Logger.getLogger(SkillsController.class.getNam
             Connection Conn = DriverManager.getConnection(URL, "root", "");
             Statement S = Conn.createStatement();
           
-            String[] requiredFormParams = {"silltitle", "description"};
+            String[] requiredFormParams = {"Address1", "city", "state", "zipcode"};
             // run through the list and thrown an exception if a required field is missing
             String message = "Error! Please fill out the required field. param:";
             boolean haserror = false;
@@ -69,24 +69,24 @@ private static final Logger log = Logger.getLogger(SkillsController.class.getNam
             }
 
             // if we get here then all the required fields were found
-            SkillBean skill = new SkillBean();
+            AddressBean address = new AddressBean();
             //not sure about this
-            SkillBeanDao skilldao = new SkillBeanDao(Conn);
-            int skillId = skilldao.findLast().getSkillId() + 1; // this should make all entries have a unique incrementing id
+            AddressBeanDao addressdao = new AddressBeanDao(Conn);
+            int addressId = addressdao.findLast().getAddress_id() + 1; // this should make all entries have a unique incrementing id
 
-            skill.setSkillId(skillId);
-            skill.setTitle(request.getParameter("title"));
-            skill.setDescription(request.getParameter("description"));
-            skill.setYears(request.getParameter("years"));
-            skill.setLevel(request.getParameter("level"));
+            address.setAddress_id(addressId);
+            address.setAddress1(request.getParameter("address1"));
+            address.setCity(request.getParameter("city"));
+            address.setState(request.getParameter("state"));
+            address.setZipcode(request.getParameter("zipcode"));
            
           
 
-            int res = skilldao.store(skill);
+            int res = addressdao.store(address);
             if (res != 0) // check that the item was successfully added.
             {
                 // add the successfully added item to the session so that the view item page will load it.
-                session.setAttribute("skill", skill);
+                session.setAttribute("address", address);
                 //redirect the page to the next step in order to fil our all information 
                 request.getRequestDispatcher("/EnterInfo.jsp").forward(request, response);
             } else {

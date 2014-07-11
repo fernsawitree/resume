@@ -45,17 +45,22 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             throws ServletException, IOException {
 //if username doesn't exist in User Table, then insert values 
 //else user already exists. Show error message 
-        String param = request.getParameter("username");
-       if (request.getParameter(param) == null || request.getParameter(param).isEmpty()){
+        HttpSession session = request.getSession();
+        String username = request.getParameter("username");
+        log.log(Level.INFO, "{0}", username );
+        log.log(Level.INFO, "{0}", request.getParameter("fname"));
+        request.getSession().removeAttribute("message");
+       if (username == null || username.isEmpty()){
            String message = "null user";
 
-                request.setAttribute("message", message);
+                session.setAttribute("message", message);
                 request.getRequestDispatcher("/CreateAccount.jsp").forward(request, response);
                 log.log(Level.INFO, "statement null username" );
+                log.log(Level.INFO, "{0}", username );
                 return ;
        }
 
-        HttpSession session = request.getSession();
+        
         String submit = request.getParameter("submit");
         
        
@@ -67,9 +72,11 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             Class.forName(Driver);
             Connection Conn = DriverManager.getConnection(URL, "root", "");
             Statement S = Conn.createStatement();
-            String username = request.getParameter("username");
-            RS = S.executeQuery(
-                    "SELECT * FROM User where username = ' " + username + "'");
+             username = request.getParameter("username");
+             String userquery = "SELECT * FROM User where username = '" + username + "'";
+            RS = S.executeQuery(                   
+                    userquery);
+            log.log(Level.INFO, userquery);
 
 
 
@@ -85,7 +92,7 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             }
 
 
-            String[] requiredFormParams = {"fname", "lname", "email", "username", "password"};
+            String[] requiredFormParams = {"fname", "lname", "email", "username", "phonenumber","password"};
             // run through the list and thrown an exception if a required field is missing
             String message = "Error! All fields are required. param:";
             boolean haserror = false;
@@ -108,6 +115,7 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             //not sure about this
             UserDao userdao = new UserDao(Conn);
             int userId = userdao.findLast().getUser_id() + 1; // this should make all entries have a unique incrementing id
+            
             user.setUser_id(userId);
             user.setUsername(request.getParameter("username"));
             user.setPassword(request.getParameter("password"));

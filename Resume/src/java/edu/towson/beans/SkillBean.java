@@ -70,6 +70,9 @@ public class SkillBean {
     public void setYears(int years) {
         this.years = years;
     }
+    
+    
+    
 
     /**
      * @return the level

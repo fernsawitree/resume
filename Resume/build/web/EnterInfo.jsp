@@ -17,30 +17,39 @@
         <header>
             <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
         </header>
-    
-        <form action="EnterInfoController" method="post">
+        <form action="AddressController" method="post">
+            
+        </form>
+        <form action="ExperienceController" method="post">
             <%--Experience Section --%>
-            <label for="companyname">Company Name: </label><input type="text" name="companyname" id="icompanyname" />
-            <label for="designation">Designation: </label><input type="text" name="designation" id="idesignation" />
-            <label for="startdate">Start Date: </label><input type="text" name="start_date" id="istart_date" />
-            <label for="enddate">End Date: </label><input type="text" name="end_date" id="iend_date" />
-            <label for="description">Description: </label><input type="text" name="description" id="iex_description" />
-            <p><a href="AddExperience.jsp">Add Experience</a></p>
+            <label for="companyname">Company Name: </label><input type="text" name="companyname" id="companyname" />
+            <label for="designation">Designation: </label><input type="text" name="designation" id="designation" />
+            <label for="startdate">Start Date: </label><input type="text" name="start_date" id="startdate" />
+            <label for="enddate">End Date: </label><input type="text" name="end_date" id="enddate" />
+            <label for="description">Description: </label><input type="text" name="description" id="description" />
+            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="addexperience" value="Add Experience" />
+        </form>
+        <form action="EducationController" method="post">
             <%--Education Section --%>
-            <label for="institutionname">Institution Name: </label><input type="text" name="institute_name" size="20"  id="iinstitute_name"/>
-            <label for="degreename">Degree: </label><input type="text" name="degreename" size="50" id="idegree_name"/>
-            <label for="startdate">Start Date: </label><input type="text" name="startdate" size="10" id="istartdate"/>
-            <label for="enddate">End Date: </label><input type="text" name="enddate" size="10" id="ienddate"/>
-            <label for="description">Description: </label><input type="text" name="description" size="50" id="ied_description"/>
-            <p><a href="AddEducation.jsp">Add Education</a></p>
-            <%--Skills Section --%>
-            <label for="skill">Skills: </label><input type="text" name="skill" size="20" id="skills_info"/>
-            <a href="AddSkills.jsp">Add Skills</a>
-            <p><input type="submit" value="Save and continue" name="submit" /></p>
-            
-            
-            
-            
+            <label for="institutionname">Institution Name: </label><input type="text" name="institutename" size="20"  id="institutename"/>
+            <label for="degreename">Degree: </label><input type="text" name="degreename" size="50" id="degreename"/>
+            <label for="startdate">Start Date: </label><input type="text" name="startdate" size="10" id="startdate"/>
+            <label for="enddate">End Date: </label><input type="text" name="enddate" size="10" id="enddate"/>
+            <label for="description">Description: </label><input type="text" name="description" size="50" id="description"/>
+            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="addeducation" value="Add Education" />
+        </form>
+        
+        <%--Skills Section --%>
+        <form action="SkillsController" method="post">
+            <label for="skill">Skill Title: </label><input type="text" name="skilltitle" size="20" id="skilltitle"/>
+            <label for="skill">Description: </label><input type="text" name="description" size="20" id="description"/>
+            <label for="skill">Years: </label><input type="text" name="years" size="20" id="years"/>
+            <label for="skill">Skill Level: </label><input type="text" name="level" size="20" id="level"/>
+            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="addskills" value="Add skills" />
         </form> 
+        <a href="">Next</a>
     </body>
 </html>

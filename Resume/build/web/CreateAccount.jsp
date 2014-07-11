@@ -28,8 +28,9 @@
             <label for="password">Password: </label><input type="password" name="password" id="password" size="20" /><br />
             <label></label><input type="submit" value="Create Account" name="submit" id="submit" class="button" />
         </form>
+        
             </div>
-           
+           <div style="color:red">${message}</div>  
             <div class="clear"></div>
         </section>
         <footer>

@@ -13,9 +13,11 @@
     </head>
     <body>
         <form action="">
-            <label for="skill">Skills: </label><input type="text" name="skill" size="20" />
-            <label for="description">Description: </label><input type="text" name="description" size="50" />
-            <input type="submit" value="Add" />
+            <label for="skill">Skill Title: </label><input type="text" name="skilltitle" size="20" id="skilltitle"/>
+            <label for="skill">Description: </label><input type="text" name="description" size="20" id="description"/>
+            <label for="skill">Years: </label><input type="text" name="years" size="20" id="years"/>
+            <label for="skill">Skill Level: </label><input type="text" name="level" size="20" id="level"/>
+            <input type="submit" value="Add" name="submit" />
             
             
         </form>
