@@ -9,9 +9,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Choose Template</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header>
+            <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
+        </header>
+        <div id="template">
+        <form action="ChooseTemplate" method="post">
+            <div id="template1">
+        <img src="images/resume1.jpg" /><br/>    
+        <label>Template 1</label><input type="radio" name="Template" value="template1" />
+            </div>
+            <div id="template2">
+        <img src="images/resume1.jpg" /><br />
+        <label>Template 2</label><input type="radio" name="Template" value="template2" /><br />
+            </div>
+        <input type="submit" value="Choose template" />
+        </form>
+        </div>
     </body>
 </html>

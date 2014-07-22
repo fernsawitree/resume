@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <servlet-mapping>
-        <servlet-name>AddressController</servlet-name>
-        <url-pattern>/AddressController</url-pattern>
-    </servlet-mapping>
+  
     <session-config>
         <session-timeout>
             30
@@ -25,11 +22,55 @@
         <servlet-class>edu.towson.controllers.AddressController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>AddressController</servlet-name>
+        <url-pattern>/AddressController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>TestEducationBean</servlet-name>
         <url-pattern>/TestEducationBean/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateAccount</servlet-name>
         <url-pattern>/CreateAccount/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ExperienceController</servlet-name>
+        <servlet-class>edu.towson.controllers.ExperienceController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExperienceController</servlet-name>
+        <url-pattern>/ExperienceController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>edu.towson.controllers.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChooseTemplate</servlet-name>
+        <servlet-class>edu.towson.controllers.ChooseTemplate</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChooseTemplate</servlet-name>
+        <url-pattern>/ChooseTemplate</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EducationController</servlet-name>
+        <servlet-class>edu.towson.controllers.EducationController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EducationController</servlet-name>
+        <url-pattern>/EducationController</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>SkillsController</servlet-name>
+        <servlet-class>edu.towson.controllers.SkillsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SkillsController</servlet-name>
+        <url-pattern>/SkillsController</url-pattern>
     </servlet-mapping>
 </web-app>

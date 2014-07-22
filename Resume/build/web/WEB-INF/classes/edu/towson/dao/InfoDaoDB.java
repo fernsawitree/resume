@@ -1,10 +1,7 @@
-
+/*
 package edu.towson.dao;
 
-/*
- * author: Fern Sawitree Euamethiyangkool
- * Adapted from AIT618 - Professor John Bell
- */
+
 
 import edu.towson.dao.DaoPattern;
 import java.sql.Connection;
@@ -238,3 +235,4 @@ public class InfoDaoDB extends DBSupport<Info> implements DaoPattern<Info> {
         ps.setString(27, info.getskills_info());
     }
 }
+*/

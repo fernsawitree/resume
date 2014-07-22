@@ -13,6 +13,7 @@ public class EducationBean {
     private String startdate;
     private String enddate;
     private String description;
+    private int User_id;
 
     /**
      * @return the education_ID
@@ -96,5 +97,19 @@ public class EducationBean {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the User_id
+     */
+    public int getUser_id() {
+        return User_id;
+    }
+
+    /**
+     * @param User_id the User_id to set
+     */
+    public void setUser_id(int User_id) {
+        this.User_id = User_id;
     }
 }

@@ -1,4 +1,4 @@
-
+/*
 package edu.towson.dao;
 
 import java.sql.Connection;
@@ -6,10 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import edu.towson.controllers.ConnectionManager;
 
-/**
- *
- * @author korea_fern
- */
+
 public class LoginDao {
     
     static Connection con = null;
@@ -102,3 +99,5 @@ return bean;
       }	
     
 }
+
+* */

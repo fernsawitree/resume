@@ -40,6 +40,13 @@ body {
     clear: both;
 }
 
+.list {
+    width:500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .button {
     font-family: Arial;
     font-size: 16px;
@@ -64,8 +71,55 @@ label {
     margin-bottom: 40px;
 }
 
+.form a {
+    margin-left: 153px;
+    border: 1px solid grey;
+    padding:3px;
+}
+
+.form a:hover {
+    color:#fff;
+}
+
+#template {
+   padding:10px;
+   width:900px;
+   margin-left: auto;
+   margin-right: auto;
+  
+}
+
+#template label {
+    width:100px;
+    margin-left: 30%;
+}
+
+#template1 {
+    width:50%;
+    float:left;
+    padding-bottom: 20px;
+}
+
+#template2 {
+    width:50%;
+    float:right;
+    padding-bottom: 20px;
+}
+
+#template input[type="submit"] {
+    margin-left: 40%;
+}
+
 input {
     font-size: 18px;
+}
+
+#login {
+    margin-left: 30%;
+}
+
+#login input {
+    margin:5px;
 }
 
 footer {

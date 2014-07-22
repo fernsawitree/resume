@@ -15,14 +15,15 @@ public class EducationBeanDao extends DBSupport<EducationBean> implements DaoPat
 
     private static boolean initialized = false;
     private static final Logger log = Logger.getLogger(EducationBean.class.getName());
-    protected static final String columnNames = "EDUCATION_ID, INSTITUTE_NAME, DEGREE_NAME, STARTDATE, ENDDATE, DESCRIPTION";
+    //protected static final String columnNames = "EDUCATION_ID, INSTITUTE_NAME, DEGREE_NAME, STARTDATE, ENDDATE, DESCRIPTION";
+    protected static final String columnNames = "INSTITUTE_NAME, DEGREE_NAME, STARTDATE, ENDDATE, DESCRIPTION";
     private Connection con = null;
     private ResultSet rs = null;
     private PreparedStatement stmt = null;
 
     public EducationBeanDao(Connection conn) {
         super(conn);
-        database = "Resume";
+        database = "resume1";
         table = "Education";
     }
 
@@ -32,7 +33,7 @@ public class EducationBeanDao extends DBSupport<EducationBean> implements DaoPat
     @Override
     protected EducationBean RsToBean(ResultSet rs) throws SQLException {
         EducationBean education = new EducationBean();
-        education.setEducationId(rs.getInt("EDUCATION_ID"));
+        //education.setEducationId(rs.getInt("EDUCATION_ID"));
         education.setInstituteName(rs.getString("INSTITUTE_NAME"));
         education.setDegreeName(rs.getString("DEGREE_NAME"));
         education.setStartdate(rs.getString("STARTDATE"));
@@ -45,9 +46,9 @@ public class EducationBeanDao extends DBSupport<EducationBean> implements DaoPat
     protected String BuildInsertString(EducationBean education) {
         StringBuilder columns = new StringBuilder(128);
         StringBuilder values = new StringBuilder(128);
-        columns.append("EDUCATION_ID");
-        values.append(education.getEducationId());
-        columns.append(", INSTITUTE_NAME");
+      //  columns.append("EDUCATION_ID");
+       // values.append(education.getEducationId());
+        columns.append("INSTITUTE_NAME");
         values.append(", '").append(education.getInstituteName()).append("'");
         columns.append(", DEGREE_NAME");
         values.append(", '").append(education.getDegreeName()).append("'");
@@ -62,19 +63,19 @@ public class EducationBeanDao extends DBSupport<EducationBean> implements DaoPat
 
     @Override
     protected void BeanToPreparedStatement(EducationBean education, PreparedStatement ps) throws SQLException {
-        ps.setInt(1, education.getEducationId());
-        ps.setString(2, education.getInstituteName());
-        ps.setString(3, education.getDegreeName());
-        ps.setString(4, education.getStartdate());
-        ps.setString(5, education.getEnddate());
-        ps.setString(6, education.getDescription());
+     //   ps.setInt(1, education.getEducationId());
+        ps.setString(1, education.getInstituteName());
+        ps.setString(2, education.getDegreeName());
+        ps.setString(3, education.getStartdate());
+        ps.setString(4, education.getEnddate());
+        ps.setString(5, education.getDescription());
     }
 
     @Override
     protected String getPSString() {
         String rval = UPDATE_INSERT.replace("${columns}", columnNames);
         rval = rval.replace("${EDUCATION}", table);// need to set the tabel for the prepared statement, this was missing from the lab source
-        rval = rval.replace("${values}", "?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+        rval = rval.replace("${values}", "?, ?, ?, ?, ?");
         return rval;
     }
 

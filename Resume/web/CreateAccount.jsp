@@ -22,6 +22,10 @@
                 <form action="CreateAccount" name="createaccount" method="post">
             <label for="fname">Fist Name: </label><input type="text" name="fname" id="fname" size="20" /><br />
             <label for="lname">Last Name: </label><input type="text" name="lname" id="lname" size="20"/><br />
+            <label for="address">Address: </label><input type="text" name="address" id="address" size="20"/><br />
+            <label for="city">City: </label><input type="text" name="city" id="city" size="20"/><br />
+            <label for="state">State: </label><input type="text" name="state" id="state" size="20"/><br />
+            <label for="zipcode">Zip code: </label><input type="text" name="zipcode" id="zipcode" size="20"/><br />
             <label for="email">Email: </label><input type="text" name="email" id="email" size="20" /><br />
             <label for="phonenumber">Phone Number: </label><input type="text" name="phonenumber" id="phonenumber" size="20" /><br />
             <label for="username">Username: </label><input type="text" name="username" id="username" size="20" /><br />

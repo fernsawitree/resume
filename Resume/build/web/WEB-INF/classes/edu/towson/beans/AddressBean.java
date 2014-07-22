@@ -14,6 +14,7 @@ public class AddressBean {
     private String state;
     private int zipcode;
     private int address_id;
+    private int user_id;
 
     /**
      * @return the address1
@@ -64,11 +65,10 @@ public class AddressBean {
         return zipcode;
     }
 
-    /**
-     * @param zipcode the zipcode to set
-     */
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
+ 
+    
+    public void setZipcode (String zipcode){
+        this.zipcode = Integer.parseInt(zipcode);
     }
 
     /**
@@ -83,6 +83,20 @@ public class AddressBean {
      */
     public void setAddress_id(int address_id) {
         this.address_id = address_id;
+    }
+
+    /**
+     * @return the user_id
+     */
+    public int getUser_id() {
+        return user_id;
+    }
+
+    /**
+     * @param user_id the user_id to set
+     */
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
     
     

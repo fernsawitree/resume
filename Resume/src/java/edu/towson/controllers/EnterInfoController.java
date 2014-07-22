@@ -1,8 +1,5 @@
-package edu.towson.controllers;
+/*package edu.towson.controllers;
 
-/*
- * Fern Sawitree
- */
 
 import edu.towson.beans.Info;
 import edu.towson.dao.DaoFactory;
@@ -18,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Fern Sawitree Euamethiyangkool
- */
 @WebServlet(urlPatterns = {"/EnterInfoController"})
 public class EnterInfoController extends HttpServlet {
 
@@ -106,3 +99,4 @@ String target = "/EnterInfo.jsp";
  
 }
 }
+* */

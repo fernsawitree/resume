@@ -16,7 +16,7 @@ abstract public class DBSupport<T> {
 //These queries are generic for any table
 
     protected static final String QUERY_FIRST = "SELECT TOP 1 * FROM ${table}";
-    protected static final String QUERY_LAST = "SELECT * FROM ${table} ORDER BY user_id DESC LIMIT 1";
+    protected static final String QUERY_LAST = "SELECT * FROM ${table} ORDER BY user_id DESC LIMIT 1";//it was by id
     protected static final String QUERY_NEXT = "SELECT TOP 1 * FROM ${table} WHERE ID > ${id}";
     protected static final String QUERY_PREV = "SELECT TOP 1 * FROM ${table} WHERE ID < ${id} ORDER BY id DESC";
     protected static final String QUERY_BY_ID = "SELECT TOP 1 * FROM ${table} WHERE ID = ${id}";
@@ -26,7 +26,7 @@ abstract public class DBSupport<T> {
 
     /*-- concrete class should override these values */
     protected String table = "RESUME";
-    protected String database = "Resume_Pro";
+    protected String database = "resume1";
     protected String basePath = null;
     private Connection connection = null;
     private static final Logger log = Logger.getLogger(DBSupport.class.getName());

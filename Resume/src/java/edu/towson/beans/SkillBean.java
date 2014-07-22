@@ -12,8 +12,9 @@ public class SkillBean {
     private int SkillId;
     private String title;
     private String description;
-    private int years;
+    private String years;
     private String level;
+    private int user_id;
 
     /**
      * @return the SkillId
@@ -60,14 +61,14 @@ public class SkillBean {
     /**
      * @return the years
      */
-    public int getYears() {
+    public String getYears() {
         return years;
     }
 
     /**
      * @param years the years to set
      */
-    public void setYears(int years) {
+    public void setYears(String years) {
         this.years = years;
     }
     
@@ -86,6 +87,20 @@ public class SkillBean {
      */
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    /**
+     * @return the user_id
+     */
+    public int getUser_id() {
+        return user_id;
+    }
+
+    /**
+     * @param user_id the user_id to set
+     */
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
     
     

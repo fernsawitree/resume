@@ -1,14 +1,10 @@
-
+/*
 package edu.towson.dao;
 
 import edu.towson.dao.InfoDaoDB;
 import edu.towson.dao.DaoPattern;
 //import edu.towson.beans.Info;
 
-/**
- *
- * Fern Sawitree Euamethiyangkool
- */
 
 public class DaoFactory {
 
@@ -49,3 +45,5 @@ public class DaoFactory {
         dao.init(willForceInit);
     }
 }
+
+*/

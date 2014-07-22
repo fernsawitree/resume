@@ -18,6 +18,7 @@ public class AddressBeanDao extends DBSupport<AddressBean> implements DaoPattern
     private static final String CITY = "city";
     private static final String STATE = "state";
     private static final String ZIPCODE = "zipcode";
+    private static final String USER_ID = "user_id";
     protected static final String columnNames = ADDRESS1 +","+ CITY +","+ STATE + ","+ ZIPCODE;
     private Connection con = null;
     private ResultSet rs = null;
@@ -25,7 +26,7 @@ public class AddressBeanDao extends DBSupport<AddressBean> implements DaoPattern
 
     public AddressBeanDao(Connection conn) {
         super(conn);
-        database = "Resume";
+        database = "resume1";
         table = "Address";
     }
 
@@ -35,10 +36,11 @@ public class AddressBeanDao extends DBSupport<AddressBean> implements DaoPattern
     @Override
     protected AddressBean RsToBean(ResultSet rs) throws SQLException {
         AddressBean address = new AddressBean();
+        address.setUser_id(rs.getInt(USER_ID));
         address.setAddress1(rs.getString(ADDRESS1));
         address.setCity(rs.getString(CITY));
         address.setState(rs.getString(STATE));
-        address.setZipcode(rs.getInt(ZIPCODE));
+        address.setZipcode(rs.getString(ZIPCODE));
         
         
         return address;

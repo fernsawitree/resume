@@ -6,8 +6,6 @@ package edu.towson.controllers;
 
 import edu.towson.beans.UserBean;
 import edu.towson.dao.UserDao;
-import edu.towson.dao.DaoFactory;
-import edu.towson.dao.DaoPattern;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,8 +14,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,7 +62,7 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
        
 
         String Driver = "com.mysql.jdbc.Driver";
-        String URL = "jdbc:mysql://localhost:3306/Resume_Pro";
+        String URL = "jdbc:mysql://localhost:3306/resume1";
         ResultSet RS = null;
         try {
             Class.forName(Driver);
@@ -92,7 +88,7 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             }
 
 
-            String[] requiredFormParams = {"fname", "lname", "email", "username", "phonenumber","password"};
+            String[] requiredFormParams = {"fname", "lname", "email", "address", "city", "state", "zipcode"  ,"username", "phonenumber","password"};
             // run through the list and thrown an exception if a required field is missing
             String message = "Error! All fields are required. param:";
             boolean haserror = false;
@@ -114,13 +110,17 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             UserBean user = new UserBean();
             //not sure about this
             UserDao userdao = new UserDao(Conn);
-            int userId = userdao.findLast().getUser_id() + 1; // this should make all entries have a unique incrementing id
+          //  int userId = userdao.findLast().getUser_id() + 1; // this should make all entries have a unique incrementing id
             
-            user.setUser_id(userId);
+         //   user.setUser_id(userId);
             user.setUsername(request.getParameter("username"));
             user.setPassword(request.getParameter("password"));
             user.setFirstname(request.getParameter("fname"));
             user.setLastname(request.getParameter("lname"));
+            user.setAddress(request.getParameter("address"));
+            user.setCity(request.getParameter("city"));
+            user.setState(request.getParameter("state"));
+            user.setZipcode(request.getParameter("zipcode"));
             user.setEmail(request.getParameter("email"));
             user.setPhoneNumber(request.getParameter("phonenumber"));
 
@@ -128,9 +128,12 @@ private static final Logger log = Logger.getLogger(CreateAccount.class.getName()
             if (res != 0) // check that the item was successfully added.
             {
                 // add the successfully added item to the session so that the view item page will load it.
+                session.setAttribute("user_id", user.getUser_id());
+                 //store everything in user object
                 session.setAttribute("user", user);
+                
                 //redirect the page to the next step in order to fil our all information 
-                request.getRequestDispatcher("/EnterInfo.jsp").forward(request, response);
+                request.getRequestDispatcher("/AddSkills.jsp").forward(request, response);
             } else {
                 request.setAttribute("message", "Data cannot be saved into the database.");
                 request.getRequestDispatcher("/CreateAccount.jsp").forward(request, response);

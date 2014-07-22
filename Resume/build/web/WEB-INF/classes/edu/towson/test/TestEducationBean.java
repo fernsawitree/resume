@@ -173,7 +173,7 @@ public class TestEducationBean extends HttpServlet {
 // Context envCtx = initCtx.lookup("java:comp/env")
 // DataSource ds = (DataSource)envCtx.lookup("jdbc/quotes");
 // return = ds.getConnection();
-        String url = "jdbc:mysql://localhost:3306/Resume_Pro";
+        String url = "jdbc:mysql://localhost:3306/resume1";
         String driver = "com.mysql.jdbc.Driver";
         log.log(Level.INFO, "Database URL: {0}", url);
         try {

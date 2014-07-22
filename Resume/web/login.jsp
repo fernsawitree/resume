@@ -10,20 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to Resume Pro</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body>
-        <header>
-            <img src="images/resumepro.png" alt="Resume Pro Logo" />
+         <header>
+            <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
         </header>
         <section class="main">
           
-            <div>
-           <form action="LoginCheck.jsp" method="post" name="login">
-            Username:<input type="text" name="username" id="username">
-            Password: <input type="password" name="password" id="password">
+            <div id="login">
+           <form action="LoginController" method="post" name="login">
+            Username:<input type="text" name="username" id="username"><br />
+            Password: <input type="password" name="password" id="password"><br />
             <input type="submit" value="Login" class="button">
         </form>
+                <div style="color:red">${message}</div> 
             </div>
             <div class="clear"></div>
         </section>
