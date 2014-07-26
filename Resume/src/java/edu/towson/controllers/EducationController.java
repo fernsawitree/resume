@@ -96,7 +96,7 @@ private static final Logger log = Logger.getLogger(EducationController.class.get
             education.setUser_id(userid);
             //education.setEducationId(educationId);
             education.setInstituteName(request.getParameter("instituteName"));
-            education.setDegreeName(request.getParameter("degreename"));
+            education.setDegreeName(request.getParameter("degreeName"));
             education.setStartdate(request.getParameter("startdate"));
             education.setEnddate(request.getParameter("enddate"));
             education.setDescription(request.getParameter("description"));

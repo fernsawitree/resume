@@ -13,7 +13,7 @@ public class EducationBean {
     private String startdate;
     private String enddate;
     private String description;
-    private int User_id;
+    private int user_id;
 
     /**
      * @return the education_ID
@@ -103,13 +103,13 @@ public class EducationBean {
      * @return the User_id
      */
     public int getUser_id() {
-        return User_id;
+        return user_id;
     }
 
     /**
      * @param User_id the User_id to set
      */
     public void setUser_id(int User_id) {
-        this.User_id = User_id;
+        this.user_id = User_id;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  
+    
     <session-config>
         <session-timeout>
             30
@@ -21,6 +21,14 @@
         <servlet-name>AddressController</servlet-name>
         <servlet-class>edu.towson.controllers.AddressController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>edu.towson.controllers.LogOut</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/LogOut</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddressController</servlet-name>
         <url-pattern>/AddressController</url-pattern>
@@ -65,7 +73,7 @@
         <servlet-name>EducationController</servlet-name>
         <url-pattern>/EducationController</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <servlet-name>SkillsController</servlet-name>
         <servlet-class>edu.towson.controllers.SkillsController</servlet-class>
     </servlet>

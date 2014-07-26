@@ -34,5 +34,9 @@
     <a href="AddSkills.jsp">Add more skills</a><br/>
     <a href="AddExperience.jsp">Continue</a>
         </div>
+         <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>

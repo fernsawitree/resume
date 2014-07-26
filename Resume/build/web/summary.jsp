@@ -16,7 +16,7 @@
         <header>
             <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
         </header>
-        <h1>You have successfully created a resume!</h1>
+        
         <h2>View Resume</h2>
         <h2>Edit Resume</h2>
         <h2>Delete Resume</h2>

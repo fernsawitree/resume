@@ -74,7 +74,7 @@ private static final Logger log = Logger.getLogger(SkillsController.class.getNam
             
             // if we get here then all the required fields were found
             SkillBean skill = new SkillBean();
-            int userid = (Integer)(session.getAttribute("id")); //was user_id
+            int userid = (Integer)(session.getAttribute("user_id")); 
             String userquery = "SELECT * FROM Skills where user_id = '" + userid + "'";
             BeanProcessor bp = new BeanProcessor();
              RS = S.executeQuery(                   

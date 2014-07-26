@@ -29,5 +29,9 @@
         <input type="submit" value="Choose template" />
         </form>
         </div>
+         <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>

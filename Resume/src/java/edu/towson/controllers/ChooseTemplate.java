@@ -75,6 +75,11 @@ public class ChooseTemplate extends HttpServlet {
 
                 } else {
                     templateID = 2;
+                    //store to database
+                    TemplateBean template = new TemplateBean();
+                    TemplateBeanDao templatedao = new TemplateBeanDao(Conn);
+                    template.setUser_id(userid);
+                    template.setTemplate_id(templateID);
                     response.sendRedirect("template2.jsp");
                 }
 

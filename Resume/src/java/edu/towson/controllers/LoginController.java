@@ -72,7 +72,8 @@ private static final Logger log = Logger.getLogger(LoginController.class.getName
             Statement S = Conn.createStatement();
              //username = request.getParameter("username");
              String userquery = "SELECT * FROM User where username = '" + username + "'" + " and password ='"+ password + "'";
-            RS = S.executeQuery(                   
+            
+             RS = S.executeQuery(                   
                     userquery);
             log.log(Level.INFO, userquery);
 
@@ -85,7 +86,14 @@ private static final Logger log = Logger.getLogger(LoginController.class.getName
                 session.setAttribute("user_id", user.getUser_id());
                 //store everything in user object
                 session.setAttribute("user", user);
-                request.getRequestDispatcher("/summary.jsp").forward(request, response);
+                String choosetemplate = "SELECT * FROM UserTemplate";
+                if(template_id=1){
+                    request.getRequestDispatcher("/template1.jsp").forward(request, response);
+                }
+                else {
+                    request.getRequestDispatcher("/template2.jsp").forward(request, response);
+                }
+                
                 return;
 
             }

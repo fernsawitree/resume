@@ -20,7 +20,8 @@ public class ExperienceBeanDao extends DBSupport<ExperienceBean> implements DaoP
     private static final String STARTDATE = "startdate";
     private static final String ENDDATE = "enddate";
     private static final String DESCRIPTION = "description";
-    protected static final String columnNames =  COMPANYNAME + "," + DESIGNATION + "," + STARTDATE + "," + ENDDATE + "," + DESCRIPTION;
+    private static final String USER_ID = "user_id";
+    protected static final String columnNames =  USER_ID + "," +COMPANYNAME + "," + DESIGNATION + "," + STARTDATE + "," + ENDDATE + "," + DESCRIPTION;
     //protected static final String columnNames = USER_ID + "," + EXPERIENCE_ID + "," + COMPANYNAME + "," + DESIGNATION + "," + STARTDATE + "," + ENDDATE + "," + DESCRIPTION;
     private Connection con = null;
     private ResultSet rs = null;
@@ -38,7 +39,7 @@ public class ExperienceBeanDao extends DBSupport<ExperienceBean> implements DaoP
     @Override
     protected ExperienceBean RsToBean(ResultSet rs) throws SQLException {
         ExperienceBean experience = new ExperienceBean();
-       // experience.setUser_id(rs.getInt(USER_ID));
+        experience.setUser_id(rs.getInt(USER_ID));
        // experience.setExperience_Id(rs.getInt(EXPERIENCE_ID));
         experience.setCompanyName(rs.getString(COMPANYNAME));
         experience.setDesignation(rs.getString(DESIGNATION));
@@ -53,9 +54,9 @@ public class ExperienceBeanDao extends DBSupport<ExperienceBean> implements DaoP
     protected String BuildInsertString(ExperienceBean experience) {
         StringBuilder columns = new StringBuilder(128);
         StringBuilder values = new StringBuilder(128);
-       // columns.append(USER_ID);
-       // values.append(experience.getUser_id()).append("'");
-      //  columns.append("," + EXPERIENCE_ID);
+        columns.append(USER_ID);
+        values.append(experience.getUser_id()).append("'");
+        //columns.append("," + EXPERIENCE_ID);
         //values.append(experience.getExperience_Id()).append("'");
         columns.append("," + COMPANYNAME);
         values.append(experience.getCompanyName());
@@ -72,20 +73,20 @@ public class ExperienceBeanDao extends DBSupport<ExperienceBean> implements DaoP
 
     @Override
     protected void BeanToPreparedStatement(ExperienceBean experience, PreparedStatement ps) throws SQLException {
-       // ps.setInt(1, experience.getUser_id());
+        ps.setInt(1, experience.getUser_id());
        // ps.setInt(1, experience.getExperience_Id());
-        ps.setString(1, experience.getCompanyName());
-        ps.setString(2, experience.getDesignation());
-        ps.setString(3, experience.getStartDate());
-        ps.setString(4, experience.getEndDate());
-        ps.setString(5, experience.getDescription());
+        ps.setString(2, experience.getCompanyName());
+        ps.setString(3, experience.getDesignation());
+        ps.setString(4, experience.getStartDate());
+        ps.setString(5, experience.getEndDate());
+        ps.setString(6, experience.getDescription());
     }
 
     @Override
     protected String getPSString() {
         String rval = UPDATE_INSERT.replace("${columns}", columnNames);
         rval = rval.replace("${table}", table);// need to set the tabel for the prepared statement, this was missing from the lab source
-        rval = rval.replace("${values}", "?, ?, ?, ?, ?");
+        rval = rval.replace("${values}", "?, ?, ?, ?, ? , ?");
         return rval;
     }
 

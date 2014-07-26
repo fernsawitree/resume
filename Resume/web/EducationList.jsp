@@ -23,8 +23,8 @@
             
         <c:forEach items="${educations}" var="item">
     
-            <c:out value="Institution Name: ${item.institutionname}" /><br/>
-                   <c:out value="Degree Name: ${item.degreename}" /><br/>
+            <c:out value="Institution Name: ${item.instituteName}" /><br/>
+                   <c:out value="Degree Name: ${item.degreeName}" /><br/>
                    <c:out value="Start Date: ${item.startdate}" /><br/>
                    <c:out value="End Date: ${item.enddate}" /><br/>
                    <c:out value="Description: ${item.description}" /><br/>
@@ -35,5 +35,9 @@
     <a href="AddEducation.jsp">Add more education</a><br/>
     <a href="ChooseTemplate.jsp">Continue</a>
         </div>
+         <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>

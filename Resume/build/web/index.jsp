@@ -36,7 +36,10 @@
         <footer>
             <img src="images/resume1.jpg" alt="resume1" />
             <img src="images/resume1.jpg" alt="resume1" />
+             
+            <p>Copyright 2014 - Resume Pro</p>
             
+        
         </footer>
     </body>
 </html>

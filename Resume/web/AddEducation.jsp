@@ -18,18 +18,22 @@
         </header>
         <h1>Education</h1>
         <div class="form">
-        <form action="EducationController" class="form">
-            <label for="institutionname">Institution Name: </label><input type="text" name="institutionname" size="20" />
-            <label for="degreename">Degree: </label><input type="text" name="degreename" size="50" />
-            <label for="startdate">Start Date: </label><input type="text" name="startdate" size="10" />
-            <label for="enddate">End Date: </label><input type="text" name="enddate" size="10" />
-            <label for="description">Description: </label><input type="text" name="description" size="50" />
+        <form action="EducationController" method="post" class="form">
+            <label for="instituteName">Institution Name: </label><input type="text" name="instituteName" size="20" /><br/>
+            <label for="degreeName">Degree: </label><input type="text" name="degreeName" size="20" /><br/>
+            <label for="startdate">Start Date: </label><input type="text" name="startdate" size="20" /><br/>
+            <label for="enddate">End Date: </label><input type="text" name="enddate" size="20" /><br/>
+            <label for="description">Description: </label><input type="text" name="description" size="20" /><br/>
             <input type="submit" value="save" name="submit" class="button"/>
          
-            
+            <div style="color:red">${message}</div>
             
         </form>
         </div>
+             <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>
 

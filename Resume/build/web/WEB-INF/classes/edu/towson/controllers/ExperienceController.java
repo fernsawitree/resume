@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.dbutils.BeanProcessor;
 
 /**
  *
@@ -28,7 +29,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = {"/ExperienceController"})
 public class ExperienceController extends HttpServlet {
-private static final Logger log = Logger.getLogger(ExperienceController.class.getName());
+
+    private static final Logger log = Logger.getLogger(ExperienceController.class.getName());
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,7 +54,7 @@ private static final Logger log = Logger.getLogger(ExperienceController.class.ge
             Class.forName(Driver);
             Connection Conn = DriverManager.getConnection(URL, "root", "");
             Statement S = Conn.createStatement();
-          
+
             String[] requiredFormParams = {"companyname", "designation"};
             // run through the list and thrown an exception if a required field is missing
             String message = "Error! Please fill out the required field. param:";
@@ -65,51 +68,54 @@ private static final Logger log = Logger.getLogger(ExperienceController.class.ge
             }
             if (haserror) {
                 request.setAttribute("message", message);
-                request.getRequestDispatcher("/EnterInfo.jsp").forward(request, response);
+                request.getRequestDispatcher("/AddExperience.jsp").forward(request, response);
                 log.log(Level.INFO, "errors");
                 return;
             }
             List<ExperienceBean> experiences = new ArrayList<ExperienceBean>();
-       
-             int userid = (Integer)(session.getAttribute("user_id"));
-             String userquery = "SELECT * FROM Experience where id = '" + userid + "'";
-            RS = S.executeQuery(                   
+
+            int userid = (Integer) (session.getAttribute("user_id"));
+            String userquery = "SELECT * FROM Experience where user_id = '" + userid + "'";
+            BeanProcessor bp = new BeanProcessor();
+            RS = S.executeQuery(
                     userquery);
             log.log(Level.INFO, userquery);
-            while(RS.next()){
+            while (RS.next()) {
                 //convert each row to experience bean object
                 //add experience object to the list
-                
+                ExperienceBean bean = (ExperienceBean) bp.toBean(RS, ExperienceBean.class);
+                experiences.add(bean);
             }
+            log.log(Level.INFO, "user_id{0}", userid);
             // if we get here then all the required fields were found
             ExperienceBean experience = new ExperienceBean();
             ExperienceBeanDao experiencedao = new ExperienceBeanDao(Conn);
-            ExperienceBean findlast = experiencedao.findLast();
-            int experienceId = 0;
-            if (findlast != null){
-             experienceId = experiencedao.findLast().getExperience_Id() + 1; // this should make all entries have a unique incrementing id
-            }
+          //  ExperienceBean findlast = experiencedao.findLast();
+          //  int experienceId = 0;
+          //  if (findlast != null) {
+          //      experienceId = experiencedao.findLast().getExperience_Id() + 1; // this should make all entries have a unique incrementing id
+          //  }
             experience.setUser_id(userid);
-            experience.setExperience_Id(experienceId);
+          //  experience.setExperience_Id(experienceId);
             experience.setCompanyName(request.getParameter("companyname"));
             experience.setDesignation(request.getParameter("designation"));
             experience.setStartDate(request.getParameter("startdate"));
             experience.setEndDate(request.getParameter("enddate"));
             experience.setDescription(request.getParameter("description"));
-          
+
 
             int res = experiencedao.store(experience);
             if (res != 0) // check that the item was successfully added.
             {
                 //add this experience object to list
-                
+                experiences.add(experience);
                 // add the successfully added item to the session so that the view item page will load it.
                 session.setAttribute("experiences", experiences);
                 //redirect the page to the next step in order to fil our all information 
-                request.getRequestDispatcher("/EnterInfo.jsp").forward(request, response);
+                request.getRequestDispatcher("/ExperienceList.jsp").forward(request, response);
             } else {
                 request.setAttribute("message", "Data cannot be saved into the database.");
-                request.getRequestDispatcher("/EnterInfo.jsp").forward(request, response);
+                request.getRequestDispatcher("/AddExperience.jsp").forward(request, response);
                 log.log(Level.INFO, "statement store data");
                 return;
 
@@ -119,7 +125,7 @@ private static final Logger log = Logger.getLogger(ExperienceController.class.ge
         } catch (SQLException ex) {
             Logger.getLogger(CreateAccount.class.getName()).log(Level.SEVERE, null, ex);
 
-        
+
         }
 
     }

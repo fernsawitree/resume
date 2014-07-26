@@ -44,6 +44,29 @@ body {
     width:500px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px dotted grey;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.address-template1 {
+    width:500px;
+     margin-left: auto;
+    margin-right: auto; 
+    text-align: center;
+}
+
+.address-template2 {
+    width:500px;
+    margin-left: auto;
+    margin-right: auto; 
+    text-align: center;
+    padding:15px;
+    margin-top:10px;
+}
+
+body.template2 h1{
+    color:orange;
 }
 
 

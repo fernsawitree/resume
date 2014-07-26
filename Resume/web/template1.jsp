@@ -11,18 +11,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Template 1</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+         <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     </head>
     <body>
         <header>
             <img src="images/resumepro.png" height="150" alt="Resume Pro Logo" />
         </header>
-        <div id="address">
+        <div class="address-template1">
         <h1>${user.firstname} ${user.lastname}</h1>
         ${user.address}, ${user.city}, ${user.state}, ${user.zipcode} <br/>
-        ${user.email}, ${user.phonenumber}
+        ${user.email}, ${user.phoneNumber}
         <hr/>
         </div>
         <div id="skills">
+            <h1>Skills</h1>
+            <div class="list">
              <c:forEach items="${skills}" var="item">
     
             <c:out value="Skill Title: ${item.title}" /><br/>
@@ -32,23 +36,28 @@
                    <a href="" >Edit</a><a href="">Delete</a>
                    <hr/>
             </c:forEach>
+            </div>
         </div>
-                   <div id="experience">
+                   
+                       <h1>Experience</h1>
+                       <div class="list">
                        <c:forEach items="${experiences}" var="item">
     
-            <c:out value="Company Name: ${item.companyname}" /><br/>
+            <c:out value="Company Name: ${item.companyName}" /><br/>
                    <c:out value="Job Title: ${item.designation}" /><br/>
-                   <c:out value="Start Date: ${item.startdate}" /><br/>
-                   <c:out value="End Date: ${item.enddate}" /><br/>
+                   <c:out value="Start Date: ${item.startDate}" /><br/>
+                   <c:out value="End Date: ${item.endDate}" /><br/>
                    <c:out value="Description: ${item.description}" /><br/>
                    <a href="" >Edit</a><a href="">Delete</a>
                    <hr/>
             </c:forEach>
                    </div>
-                   <div id="education">
+                   
+                       <h1>Education</h1>
+                       <div class="list">
                        <c:forEach items="${educations}" var="item">
-            <c:out value="Institution Name: ${item.institutionname}" /><br/>
-                   <c:out value="Degree Name: ${item.degreename}" /><br/>
+            <c:out value="Institution Name: ${item.instituteName}" /><br/>
+                   <c:out value="Degree Name: ${item.degreeName}" /><br/>
                    <c:out value="Start Date: ${item.startdate}" /><br/>
                    <c:out value="End Date: ${item.enddate}" /><br/>
                    <c:out value="Description: ${item.description}" /><br/>
@@ -56,8 +65,11 @@
                    <hr/>
             </c:forEach>
                    </div>
-        <a href="ChooseTemplate.jsp">Back</a>
-        <a href="">Edit</a>
+        <a style="margin-left:50%;margin-top:40px;font-size: 20px;font-weight:bold;" href="ChooseTemplate.jsp">Back</a>
+         <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
         
     </body>
 </html>

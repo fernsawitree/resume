@@ -23,10 +23,10 @@
             
         <c:forEach items="${experiences}" var="item">
     
-            <c:out value="Company Name: ${item.companyname}" /><br/>
+                   <c:out value="Company Name: ${item.companyName}" /><br/>
                    <c:out value="Job Title: ${item.designation}" /><br/>
-                   <c:out value="Start Date: ${item.startdate}" /><br/>
-                   <c:out value="End Date: ${item.enddate}" /><br/>
+                   <c:out value="Start Date: ${item.startDate}" /><br/>
+                   <c:out value="End Date: ${item.endDate}" /><br/>
                    <c:out value="Description: ${item.description}" /><br/>
                    <a href="" >Edit</a><a href="">Delete</a>
                    <hr/>
@@ -35,5 +35,9 @@
     <a href="AddExperience.jsp">Add more experience</a><br/>
     <a href="AddEducation.jsp">Continue</a>
         </div>
+         <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>

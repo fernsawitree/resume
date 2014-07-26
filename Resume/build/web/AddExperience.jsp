@@ -18,7 +18,7 @@
         </header>
         <h1>Experience</h1>
         <div class="form">
-        <form action="">
+        <form action="ExperienceController" method="post">
             <label for="companyname">Company Name: </label><input type="text" name="companyname" id="companyname" />
             <label for="designation">Title: </label><input type="text" name="designation" id="designation" />
             <label for="startdate">Start Date: </label><input type="text" name="startdate" id="startdate" />
@@ -26,10 +26,14 @@
             <label for="description">Description: </label><input type="text" name="description" id="description" />
             <input type="submit" name="submit" value="Save" />
            
-            
+            <div style="color:red">${message}</div>
             
             
         </form>
         </div>
+             <footer>
+            <p>Copyright 2014 - Resume Pro</p>
+            
+        </footer>
     </body>
 </html>
